@@ -1017,7 +1017,11 @@ header {
 @media (max-width: 768px) {
     header { padding: 15px 20px; justify-content: space-between; }
     .logo { position: static; }
-    .logo img { width: 72px; }
+    .logo img {
+        width: 72px;
+        padding-top: 0;
+        margin-top: -6px;
+    }
 
     .navigate a { padding: 9px 18px; font-size: 13px; }
 
@@ -1026,11 +1030,16 @@ header {
     .intro h2 { font-size: 36px; }
 
     .bottom-content {
-        width: 90%;
-        flex-wrap: wrap;
-        gap: 10px;
+        width: calc(100% - 40px);
+        max-width: 480px;
+        bottom: 35px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: nowrap;
+        gap: 8px;
         font-size: 12px;
-        padding: 10px 18px;
+        padding: 10px 16px;
     }
 
     .main .container { flex-direction: column; }
@@ -1076,13 +1085,44 @@ header {
 }
 
 @media (max-width: 480px) {
-    .navigate a::after { display: none; }
+    .navigate a {
+        padding: 8px 16px;
+        font-size: 12.5px;
+    }
+    .navigate a::after {
+        bottom: 5px;
+        height: 2px;
+    }
 
-    .hero { height: 62vh; }
+    .hero {
+        height: 66vh;
+        min-height: 480px;
+    }
     .intro { width: 95%; }
     .intro h2 { font-size: 28px; }
     .intro h4 { font-size: 13px; }
-    .bottom-content { display: none; }
+    .bottom-content {
+        display: flex;
+        width: calc(100% - 24px);
+        max-width: 390px;
+        bottom: 36px;
+        padding: 8px 12px;
+        justify-content: space-between;
+        align-items: center;
+        gap: 4px;
+        font-size: 10.5px;
+    }
+    .feature {
+        gap: 4px;
+    }
+    .feature i {
+        font-size: 12px;
+    }
+    .hero-disclaimer {
+        bottom: 6px;
+        right: 14px;
+        font-size: 9.5px;
+    }
 
     .rooms { padding: 35px 14px; }
     .rooms-grid {
