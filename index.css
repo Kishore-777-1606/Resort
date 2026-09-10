@@ -274,39 +274,53 @@ header {
 
 .rooms-grid {
     display: grid;
-    grid-template-columns: 27.5% 45% 27.5%;
-    grid-template-rows: 1fr 1fr;
-    gap: 14px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto;
+    gap: 20px;
     max-width: 1280px;
     margin: 0 auto;
     padding: 10px 4px;
     align-items: stretch;
 }
 
-/* ─── CARD POSITIONING (EXACT 4 CARDS) ─── */
+/* ─── CARD POSITIONING (EXACTLY 2 ROWS: 3 COLUMNS × 2 ROWS) ─── */
 
-/* CARD 1: Left Tall Vertical Card */
-.rooms-grid .card-left {
+/* ROW 1 */
+/* CARD 1: Luxury Bathroom */
+.rooms-grid .card-bathroom {
     grid-column: 1;
-    grid-row: 1 / 3;
+    grid-row: 1;
 }
 
-/* CARD 2: Center Top Wide Horizontal Card */
-.rooms-grid .card-center-top {
+/* CARD 2: Relaxing Courtyard */
+.rooms-grid .card-courtyard {
     grid-column: 2;
     grid-row: 1;
 }
 
-/* CARD 3: Center Bottom Wide Horizontal Card */
-.rooms-grid .card-center-bottom {
+/* CARD 3: Comfortable Living */
+.rooms-grid .card-living {
+    grid-column: 3;
+    grid-row: 1;
+}
+
+/* ROW 2 */
+/* CARD 4: Cozy Master Suite */
+.rooms-grid .card-master-suite {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+/* CARD 5: Second Bedroom */
+.rooms-grid .card-second-bedroom {
     grid-column: 2;
     grid-row: 2;
 }
 
-/* CARD 4: Right Tall Vertical Card */
-.rooms-grid .card-right {
+/* CARD 6: Serene Ambience */
+.rooms-grid .card-serene-ambience {
     grid-column: 3;
-    grid-row: 1 / 3;
+    grid-row: 2;
 }
 
 /* ─── CARD GENERAL STYLES ─── */
@@ -319,48 +333,14 @@ header {
     border: 1px solid #eaefe9;
     display: flex;
     flex-direction: column;
-    opacity: 0;
-    transition: opacity 0.7s ease, transform 0.28s ease, box-shadow 0.28s ease;
     padding-bottom: 0;
-}
-
-.rooms-grid .card.active {
-    opacity: 1;
-}
-
-/* Sequential stagger timing for room cards (0.15s intervals) */
-.rooms-grid .card-left {
-    transition-delay: 0s;
-}
-
-.rooms-grid .card-center-top {
-    transition-delay: 0.15s;
-}
-
-.rooms-grid .card-center-bottom {
-    transition-delay: 0.3s;
-}
-
-.rooms-grid .card-right {
-    transition-delay: 0.45s;
+    height: 100%;
 }
 
 .rooms-grid .card:hover {
     transform: translateY(-3px);
     box-shadow: 0 10px 24px rgba(0, 0, 0, 0.09);
     transition-delay: 0s;
-}
-
-/* Tall Card styling (Left and Right - increased height by ~20%) */
-.rooms-grid .card-tall {
-    height: 100%;
-    min-height: 624px;
-}
-
-/* Wide Card styling (Center Top and Bottom - auto height to fit content without empty space) */
-.rooms-grid .card-wide {
-    height: auto;
-    align-self: start;
 }
 
 /* Dark Theme for Card 1 (Matches reference Luxury Bathroom) */
@@ -386,9 +366,11 @@ header {
 
 .room-image-wrap {
     width: 100%;
+    aspect-ratio: 4 / 3;
     position: relative;
     overflow: hidden;
     background: #eef2ed;
+    flex-shrink: 0;
 }
 
 .room-image-wrap .room-img {
@@ -404,48 +386,29 @@ header {
     transform: scale(1.04);
 }
 
-/* Tall Card Portrait Image Ratio (Occupies dominant upper portion - scaled +20%) */
-.card-tall .room-image-wrap {
-    flex: 1 1 auto;
-    min-height: 504px;
-    width: 100%;
-}
-
-.card-tall .room-image-wrap .room-img {
-    object-position: center;
-}
-
-/* Specific framing adjustment for Master Suite and Bathroom */
-.card-left .room-image-wrap .room-img {
-    object-position: center 30%;
-}
-
-.card-right .room-image-wrap .room-img {
+/* Specific framing adjustments */
+.card-bathroom .room-image-wrap .room-img {
     object-position: center 40%;
 }
 
-/* Wide Card Landscape Image Ratio (Normal Landscape 2.1:1 Ratio) */
-.card-wide .room-image-wrap {
-    width: 100%;
-    aspect-ratio: 2.1 / 1;
-    height: auto;
-    overflow: hidden;
-    flex-shrink: 0;
+.card-courtyard .room-image-wrap .room-img {
+    object-position: right top;
 }
 
-.card-wide .room-image-wrap .room-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-.card-center-top .room-image-wrap .room-img {
-    object-position: center 55%;
-}
-
-.card-center-bottom .room-image-wrap .room-img {
+.card-living .room-image-wrap .room-img {
     object-position: center 50%;
+}
+
+.card-master-suite .room-image-wrap .room-img {
+    object-position: right 50%;
+}
+
+.card-second-bedroom .room-image-wrap .room-img {
+    object-position: center 45%;
+}
+
+.card-serene-ambience .room-image-wrap .room-img {
+    object-position: center 40%;
 }
 
 /* ─── CARD INFO AREA ─── */
@@ -776,6 +739,8 @@ header {
 .delay-2 { transition-delay: 0.1s; }
 .delay-3 { transition-delay: 0.2s; }
 .delay-4 { transition-delay: 0.3s; }
+.delay-5 { transition-delay: 0.4s; }
+.delay-6 { transition-delay: 0.5s; }
 
 /* ─── CONTACT PAGE ─── */
 
@@ -974,19 +939,21 @@ header {
 @media (max-width: 1024px) {
     .rooms { padding: 50px 24px; }
     .rooms-grid {
-        grid-template-columns: 27.5% 45% 27.5%;
-        gap: 12px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
     }
-    .rooms-grid .card-tall {
-        min-height: 520px;
+    .rooms-grid .card-bathroom,
+    .rooms-grid .card-courtyard,
+    .rooms-grid .card-living,
+    .rooms-grid .card-master-suite,
+    .rooms-grid .card-second-bedroom,
+    .rooms-grid .card-serene-ambience {
+        grid-column: auto;
+        grid-row: auto;
     }
-    .card-tall .room-image-wrap {
-        min-height: 400px;
-    }
-    .card-wide .room-image-wrap {
-        aspect-ratio: 2.1 / 1;
+    .rooms-grid .room-image-wrap {
+        aspect-ratio: 4 / 3;
         height: auto;
-        overflow: hidden;
     }
     .occasion { padding: 50px 30px; }
     .occasion-cards { grid-template-columns: repeat(2, 1fr); }
@@ -1058,16 +1025,12 @@ header {
     .rooms-grid .card-tall {
         min-height: unset;
     }
-    /* Appropriate ratios on mobile stack */
-    .card-tall .room-image-wrap {
-        min-height: 280px;
-        height: 280px;
-    }
-    .card-wide .room-image-wrap {
-        aspect-ratio: 2.6 / 1;
+    /* Appropriate portrait ratios on mobile stack */
+    .rooms-grid .room-image-wrap {
+        aspect-ratio: 4 / 3;
         height: auto;
         min-height: unset;
-        max-height: 180px;
+        max-height: 280px;
     }
 
     .occasion { padding: 40px 20px; }
@@ -1129,19 +1092,11 @@ header {
         grid-template-columns: 1fr;
         gap: 16px;
     }
-    .rooms-grid .card-tall,
-    .rooms-grid .card-wide {
-        min-height: unset;
-    }
-    .card-tall .room-image-wrap {
-        min-height: 210px;
-        height: 210px;
-    }
-    .card-wide .room-image-wrap {
-        aspect-ratio: 2.4 / 1;
+    .rooms-grid .room-image-wrap {
+        aspect-ratio: 4 / 3;
         height: auto;
         min-height: unset;
-        max-height: 160px;
+        max-height: 240px;
     }
     .occasion-cards { grid-template-columns: 1fr; }
 
