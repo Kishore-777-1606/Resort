@@ -104,7 +104,7 @@ header {
     position: relative;
     background-image:
         linear-gradient(rgba(0,0,0,0.18), rgba(0,0,0,0.58)),
-        url("images/hero.png");
+        url("images/hero_1.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
