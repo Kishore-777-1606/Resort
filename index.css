@@ -520,11 +520,12 @@ header {
 
 .occasion-cards {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 300px));
-    justify-content: center;
+    grid-template-columns: repeat(4, 1fr);
     gap: 24px;
+    max-width: 1240px;
     margin: 0 auto;
     padding: 8px 4px;
+    align-items: stretch;
 }
 
 /* ─── O-CARD (hover fixed) ─── */
@@ -536,6 +537,9 @@ header {
     padding-bottom: 16px;
     text-align: center;
     box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .o-card img {
@@ -571,17 +575,20 @@ header {
     gap: 36px;
     align-items: center;
     border-radius: var(--radius);
-    padding: 30px 20px;
+    padding: 20px 24px;
     background: white;
     box-shadow: var(--shadow-sm);
     max-width: 1200px;
     width: calc(100% - 60px);
-    margin: 50px auto 20px;
+    margin: 40px auto 20px;
 }
 
 .o-left {
     flex: 1;
     padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .o-left > h2 {
@@ -589,14 +596,18 @@ header {
     font-size: 32px;
     font-weight: 700;
     color: var(--green);
-    margin: 0 0 28px;
+    margin: 0 0 20px;
 }
 
 .o-feature {
     display: flex;
     align-items: center;
     gap: 14px;
-    margin-bottom: 18px;
+    margin-bottom: 14px;
+}
+
+.o-feature:last-child {
+    margin-bottom: 0;
 }
 
 .o-feature i {
@@ -623,7 +634,7 @@ header {
     flex: 1;
     width: 100%;
     max-width: 500px;
-    aspect-ratio: 4 / 5;
+    aspect-ratio: 4 / 3.5;
     overflow: hidden;
     border-radius: 18px;
 }
@@ -642,10 +653,16 @@ header {
 }
 
 .o-right {
-    flex: 1;
     background: var(--green-light);
-    padding: 30px 24px;
+    padding: 26px 22px;
     border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
 }
 
 .o-right h3 {
@@ -654,6 +671,7 @@ header {
     font-weight: 700;
     color: var(--text-dark);
     margin: 0 0 14px;
+    line-height: 1.25;
 }
 
 .o-right button,
@@ -677,6 +695,42 @@ header {
 .o-right .book-btn:hover {
     background: var(--green-dark);
     transform: translateY(-2px);
+}
+
+/* ─── BOOKING PLATFORMS (Airbnb & Booking.com) ─── */
+.booking-platforms {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 14px;
+    flex-wrap: wrap;
+}
+
+.platform-link {
+    display: inline-flex;
+    padding-top: 20px;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.platform-link:hover {
+    opacity: 0.78;
+    transform: translateY(-1px) scale(1.03);
+}
+
+.platform-link.airbnb img {
+    height: 20px;
+    width: auto;
+    display: block;
+}
+
+.platform-link.booking img {
+    height: 16px;
+    width: auto;
+    display: block;
 }
 
 /* ─── FOOTER ─── */
