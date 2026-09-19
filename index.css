@@ -245,28 +245,28 @@ header {
 /* ─── ROOMS ─── */
 
 .rooms {
-    padding: 70px 60px;
+    padding: 36px 30px 40px;
     background: var(--bg-soft);
 }
 
 .rooms-header {
     text-align: center;
-    margin-bottom: 44px;
+    margin-bottom: 22px;
 }
 
 .sub-title {
     color: var(--green);
     font-weight: 600;
-    font-size: 13px;
+    font-size: 12px;
     letter-spacing: 1.5px;
     text-transform: uppercase;
     display: block;
-    margin-bottom: 10px;
+    margin-bottom: 6px;
 }
 
 .rooms-header h2 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 36px;
+    font-size: 32px;
     font-weight: 700;
     margin: 0;
     color: var(--text-dark);
@@ -274,62 +274,21 @@ header {
 
 .rooms-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: auto auto;
-    gap: 20px;
-    max-width: 1280px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    max-width: 1240px;
     margin: 0 auto;
-    padding: 10px 4px;
+    padding: 2px;
     align-items: stretch;
-}
-
-/* ─── CARD POSITIONING (EXACTLY 2 ROWS: 3 COLUMNS × 2 ROWS) ─── */
-
-/* ROW 1 */
-/* CARD 1: Luxury Bathroom */
-.rooms-grid .card-bathroom {
-    grid-column: 1;
-    grid-row: 1;
-}
-
-/* CARD 2: Relaxing Courtyard */
-.rooms-grid .card-courtyard {
-    grid-column: 2;
-    grid-row: 1;
-}
-
-/* CARD 3: Comfortable Living */
-.rooms-grid .card-living {
-    grid-column: 3;
-    grid-row: 1;
-}
-
-/* ROW 2 */
-/* CARD 4: Cozy Master Suite */
-.rooms-grid .card-master-suite {
-    grid-column: 1;
-    grid-row: 2;
-}
-
-/* CARD 5: Second Bedroom */
-.rooms-grid .card-second-bedroom {
-    grid-column: 2;
-    grid-row: 2;
-}
-
-/* CARD 6: Serene Ambience */
-.rooms-grid .card-serene-ambience {
-    grid-column: 3;
-    grid-row: 2;
 }
 
 /* ─── CARD GENERAL STYLES ─── */
 
 .rooms-grid .card {
     background: #ffffff;
-    border-radius: 18px;
+    border-radius: 14px;
     overflow: hidden;
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
     border: 1px solid #eaefe9;
     display: flex;
     flex-direction: column;
@@ -340,10 +299,11 @@ header {
 .rooms-grid .card:hover {
     transform: translateY(-3px);
     box-shadow: 0 10px 24px rgba(0, 0, 0, 0.09);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
     transition-delay: 0s;
 }
 
-/* Dark Theme for Card 1 (Matches reference Luxury Bathroom) */
+/* Dark Theme for Cards (if needed) */
 .rooms-grid .card.card-dark {
     background: #2b3336;
     color: #ffffff;
@@ -366,7 +326,7 @@ header {
 
 .room-image-wrap {
     width: 100%;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 16 / 10;
     position: relative;
     overflow: hidden;
     background: #eef2ed;
@@ -387,34 +347,42 @@ header {
 }
 
 /* Specific framing adjustments */
-.card-bathroom .room-image-wrap .room-img {
-    object-position: center 40%;
+.card-courtyard .room-image-wrap .room-img {
+    object-position: right 30%;
 }
 
-.card-courtyard .room-image-wrap .room-img {
-    object-position: right top;
+.card-reception .room-image-wrap .room-img {
+    object-position: center 55%;
 }
 
 .card-living .room-image-wrap .room-img {
+    object-position: center 55%;
+}
+
+.card-ambiance .room-image-wrap .room-img {
+    object-position: center 30%;
+}
+
+.card-kitchen .room-image-wrap .room-img {
+    object-position: center 55%;
+}
+
+.card-bedroom-1 .room-image-wrap .room-img {
+    object-position: left 50%;
+}
+
+.card-bedroom-2 .room-image-wrap .room-img {
+    object-position: center top;
+}
+
+.card-bathroom .room-image-wrap .room-img {
     object-position: center 50%;
-}
-
-.card-master-suite .room-image-wrap .room-img {
-    object-position: right 50%;
-}
-
-.card-second-bedroom .room-image-wrap .room-img {
-    object-position: center 45%;
-}
-
-.card-serene-ambience .room-image-wrap .room-img {
-    object-position: center 40%;
 }
 
 /* ─── CARD INFO AREA ─── */
 
 .card-info {
-    padding: 14px 18px 16px;
+    padding: 10px 14px 12px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -423,29 +391,40 @@ header {
 .card-title-row {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 8px;
-    margin-bottom: 4px;
+    margin-bottom: 3px;
 }
 
 .card-title-row h4 {
     margin: 0;
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 0.7px;
-    text-transform: uppercase;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13.5px;
+    font-weight: 600;
+    letter-spacing: normal;
+    text-transform: none;
     color: var(--text-dark);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .card-title-row i {
-    font-size: 13px;
+    font-size: 12px;
     color: var(--green);
+    flex-shrink: 0;
 }
 
 .card-info p {
     margin: 0;
-    font-size: 12.5px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
     color: var(--text-light);
-    line-height: 1.45;
+    line-height: 1.4;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /* ─── SM SECTION ─── */
@@ -626,13 +605,19 @@ header {
 
 .o-center {
     flex: 1;
+    width: 100%;
+    max-width: 500px;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    border-radius: 18px;
 }
 
 .o-center img {
     width: 100%;
-    border-radius: var(--radius);
-    display: block;
+    height: 100%;
     object-fit: cover;
+    object-position: center 50%;
+    display: block;
 }
 
 .o-right {
@@ -741,6 +726,8 @@ header {
 .delay-4 { transition-delay: 0.3s; }
 .delay-5 { transition-delay: 0.4s; }
 .delay-6 { transition-delay: 0.5s; }
+.delay-7 { transition-delay: 0.6s; }
+.delay-8 { transition-delay: 0.7s; }
 
 /* ─── CONTACT PAGE ─── */
 
@@ -937,22 +924,13 @@ header {
 /* ─── RESPONSIVE ─── */
 
 @media (max-width: 1024px) {
-    .rooms { padding: 50px 24px; }
+    .rooms { padding: 40px 24px; }
     .rooms-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 16px;
     }
-    .rooms-grid .card-bathroom,
-    .rooms-grid .card-courtyard,
-    .rooms-grid .card-living,
-    .rooms-grid .card-master-suite,
-    .rooms-grid .card-second-bedroom,
-    .rooms-grid .card-serene-ambience {
-        grid-column: auto;
-        grid-row: auto;
-    }
     .rooms-grid .room-image-wrap {
-        aspect-ratio: 4 / 3;
+        aspect-ratio: 16 / 10;
         height: auto;
     }
     .occasion { padding: 50px 30px; }
@@ -1013,23 +991,18 @@ header {
     .welcome-section { width: 100%; }
     .main img { width: 100%; }
 
-    .rooms { padding: 40px 16px; }
+    .rooms { padding: 35px 16px; }
     .rooms-grid {
-        display: flex;
-        flex-direction: column;
-        gap: 18px;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 16px;
     }
     .rooms-grid .card {
         width: 100%;
     }
-    .rooms-grid .card-tall {
-        min-height: unset;
-    }
-    /* Appropriate portrait ratios on mobile stack */
     .rooms-grid .room-image-wrap {
-        aspect-ratio: 4 / 3;
+        aspect-ratio: 16 / 10;
         height: auto;
-        min-height: unset;
         max-height: 280px;
     }
 
@@ -1087,16 +1060,16 @@ header {
         font-size: 9.5px;
     }
 
-    .rooms { padding: 35px 14px; }
+    .rooms { padding: 30px 14px; }
     .rooms-grid {
         grid-template-columns: 1fr;
-        gap: 16px;
+        gap: 14px;
     }
     .rooms-grid .room-image-wrap {
-        aspect-ratio: 4 / 3;
+        aspect-ratio: 16 / 10;
         height: auto;
         min-height: unset;
-        max-height: 240px;
+        max-height: 220px;
     }
     .occasion-cards { grid-template-columns: 1fr; }
 
