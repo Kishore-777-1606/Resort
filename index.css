@@ -273,18 +273,30 @@ header {
 }
 
 .rooms-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 16px;
     max-width: 1240px;
     margin: 0 auto;
     padding: 2px;
-    align-items: stretch;
+}
+
+.rooms-row-break {
+    flex-basis: 100%;
+    width: 100%;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    border: none;
 }
 
 /* ─── CARD GENERAL STYLES ─── */
 
 .rooms-grid .card {
+    flex: 0 0 calc((100% - 48px) / 4);
+    max-width: calc((100% - 48px) / 4);
+    width: calc((100% - 48px) / 4);
     background: #ffffff;
     border-radius: 14px;
     overflow: hidden;
@@ -508,9 +520,10 @@ header {
 
 .occasion-cards {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 300px));
+    justify-content: center;
     gap: 24px;
-    margin-bottom: 50px;
+    margin: 0 auto;
     padding: 8px 4px;
 }
 
@@ -551,7 +564,7 @@ header {
     line-height: 1.5;
 }
 
-/* ─── OCCASION BOTTOM ─── */
+/* ─── OCCASION BOTTOM / ARRIVAL & ENTRANCE ─── */
 
 .occasion-bottom {
     display: flex;
@@ -561,6 +574,9 @@ header {
     padding: 30px 20px;
     background: white;
     box-shadow: var(--shadow-sm);
+    max-width: 1200px;
+    width: calc(100% - 60px);
+    margin: 50px auto 20px;
 }
 
 .o-left {
@@ -618,6 +634,11 @@ header {
     object-fit: cover;
     object-position: center 50%;
     display: block;
+    transition: transform 0.45s ease;
+}
+
+.o-center:hover img {
+    transform: scale(1.04);
 }
 
 .o-right {
@@ -925,19 +946,32 @@ header {
 
 @media (max-width: 1024px) {
     .rooms { padding: 40px 24px; }
+    .rooms-row-break { display: none; }
     .rooms-grid {
-        grid-template-columns: repeat(2, 1fr);
+        display: flex;
+        flex-wrap: wrap;
         gap: 16px;
+    }
+    .rooms-grid .card {
+        flex: 0 0 calc((100% - 16px) / 2);
+        max-width: calc((100% - 16px) / 2);
+        width: calc((100% - 16px) / 2);
     }
     .rooms-grid .room-image-wrap {
         aspect-ratio: 16 / 10;
         height: auto;
     }
     .occasion { padding: 50px 30px; }
-    .occasion-cards { grid-template-columns: repeat(2, 1fr); }
+    .occasion-cards {
+        grid-template-columns: repeat(2, minmax(0, 320px));
+        justify-content: center;
+        gap: 20px;
+    }
 
     .occasion-bottom {
         flex-direction: column;
+        width: calc(100% - 48px);
+        margin: 40px auto 10px;
     }
 
     .o-left {
@@ -992,13 +1026,16 @@ header {
     .main img { width: 100%; }
 
     .rooms { padding: 35px 16px; }
+    .rooms-row-break { display: none; }
     .rooms-grid {
-        display: grid;
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
         gap: 16px;
     }
     .rooms-grid .card {
         width: 100%;
+        max-width: 100%;
+        flex: 1 1 auto;
     }
     .rooms-grid .room-image-wrap {
         aspect-ratio: 16 / 10;
@@ -1007,7 +1044,16 @@ header {
     }
 
     .occasion { padding: 40px 20px; }
-    .occasion-cards { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .occasion-cards {
+        grid-template-columns: minmax(0, 420px);
+        justify-content: center;
+        gap: 16px;
+    }
+    .occasion-bottom {
+        width: calc(100% - 32px);
+        padding: 24px 16px;
+        margin: 30px auto 10px;
+    }
 
     .contact-hero { height: 40vh; padding-bottom: 30px; }
     .contact-hero-content { padding-left: 25px; }
@@ -1061,9 +1107,16 @@ header {
     }
 
     .rooms { padding: 30px 14px; }
+    .rooms-row-break { display: none; }
     .rooms-grid {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
         gap: 14px;
+    }
+    .rooms-grid .card {
+        width: 100%;
+        max-width: 100%;
+        flex: 1 1 auto;
     }
     .rooms-grid .room-image-wrap {
         aspect-ratio: 16 / 10;
@@ -1071,7 +1124,15 @@ header {
         min-height: unset;
         max-height: 220px;
     }
-    .occasion-cards { grid-template-columns: 1fr; }
+    .occasion-cards {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    .occasion-bottom {
+        width: calc(100% - 24px);
+        padding: 20px 14px;
+        margin: 25px auto 10px;
+    }
 
     .rooms-header h2,
     .occasion-header h2 { font-size: 26px; }
