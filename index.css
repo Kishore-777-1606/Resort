@@ -781,6 +781,10 @@ header {
     color: var(--green-accent);
     transform: translateY(-2px);
 }
+.footer-right > a {
+    color: inherit;
+    text-decoration: none;
+}
 
 /* ─── REVEAL ANIMATION ─── */
 /* This is the ONLY place opacity transition lives */
